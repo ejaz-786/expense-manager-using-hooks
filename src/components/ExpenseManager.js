@@ -21,6 +21,7 @@ const ExpenseManager = () => {
     let totalincome = 0;
     let totalbalance = 0;
     let totalexpense = 0;
+
     let arr1 = [];
  
     //  ........ ADD INCOME FUNCTION ............. //
@@ -42,111 +43,151 @@ const ExpenseManager = () => {
     }
 // ........ ADD EXPENSES FUNCTION  .............//
     const AddProduct = () =>{
-    
+      
        let expense_val = document.getElementById('item-amount').value;
        let text = document.getElementById('item').value;
        let date = document.getElementById('date').value;
        let option_val = document.getElementById('select').value;
-       setFlag(false);
+       let total_exp = 0;
+        let groc = 0;
+        let veg = 0;
+        let trav = 0;
+        let misc = 0;
        let obj = {expense_val:expense_val,text:text,option_val:option_val,date:date}
-
-       if(option_val === 'grocery'){
-
-    //    let obj = {expense_val:expense_val,text:text,option_val:option_val,date:date}
-       arr1.push(obj)
-      
-        arr1.forEach((val)=>{
-          if(val.option_val === 'grocery'){
-                if(editflag){
-                totalexpense = totalexpense + parseInt(val.expense_val);
-                setGrocerry(grocerry + totalexpense);
-                setTotalExpense(totalExpense + totalexpense);
-                setTotalBalance(totalBalance - parseInt(totalexpense));
-                setCart([...cart,obj])
-                }
-                else{
-                    console.log('hello');
-                    
-                    let temp = cart;
-                    temp.splice(index1,1,obj);
-                    console.log(temp);
-                    
-                    setCart([...temp])
-                  }
-             }
-        })
-        }
-       else if(option_val === 'veggies'){
-    //    let obj = {expense_val:expense_val,text:text,option_val:option_val,date:date}
-        arr1.push(obj);
-         arr1.forEach((val)=>{
-           
-             if(val.option_val === 'veggies'){
-                if(editflag){
-                 totalexpense = totalexpense + parseInt(val.expense_val);
-                 setVeggies(veggies + totalexpense);
-                 setTotalExpense(totalExpense + totalexpense);
-                 setTotalBalance(totalBalance - parseInt(totalexpense));
-                 setCart([...cart,obj]);
-                }
-                else{
-                    let temp = cart;
-                    temp.splice(index1,1,obj);
-                    setCart([...temp]) ;
-                }
-             }
-         })
-         
-       }
-       else if(option_val === 'travelling'){
-        // let obj = {expense_val:expense_val,text:text,option_val:option_val,date:date}
-        arr1.push(obj)
+       arr1.push(obj);
        
-         arr1.forEach((val)=>{
-           if(val.option_val === 'travelling'){
-               if(editflag){
-                totalexpense = totalexpense + parseInt(val.expense_val);
-                setTravelling(travelling + totalexpense);
-                setTotalExpense(totalExpense + totalexpense);
-                setTotalBalance(totalBalance - parseInt(totalexpense));
-                setCart([...cart,obj])
-               }
-               else{
-                let temp = cart;
-                temp.splice(index1,1,obj);
-                setCart([...temp]) ;
-               }
-                
-             }
-         })
-         }
-       else if(option_val === 'miscllaneous'){
-        // let obj = {expense_val:expense_val,text:text,option_val:option_val,date:date}
-        arr1.push(obj)
-      
-        arr1.forEach((val)=>{
-           if(val.option_val === 'miscllaneous'){
-            if(editflag){
-                totalexpense = totalexpense + parseInt(val.expense_val);
-                setMiscallneous(miscallneous + totalexpense);
-                setTotalExpense(totalExpense + totalexpense);
-                setTotalBalance(totalBalance - parseInt(totalexpense));
-                setCart([...cart,obj])
-            }
-            else{
-                let temp = cart;
-                temp.splice(index1,1,obj);
-                setCart([...temp]) ;
-            }
-                
-            }
-        })
+       arr1.forEach((val)=>{
         
-       }
-       else{
-        alert('please select category..')
-       }
+           if(val.option_val === 'grocery'){
+              groc = groc + parseInt(val.expense_val); 
+              
+            } 
+           if(val.option_val === 'veggies'){
+              veg = veg + parseInt(val.expense_val);
+            } 
+             if(val.option_val === 'travelling'){
+              trav = trav + parseInt(val.expense_val);
+            }  
+             if(val.option_val === 'miscllaneous'){
+              misc = misc + parseInt(val.expense_val);
+            }
+          })
+        total_exp = groc + veg + misc + trav;
+        console.log(total_exp);
+        console.log(typeof total_exp);
+        // setVeggies(veg);
+        // setGrocerry(groc);
+        // setTravelling(trav);
+        // setMiscallneous(misc);
+        // setTotalExpense(total_exp)
+        // setCart(arr1);
+       
+        
+       
+        // console.log(arr1);
+        
+        
+
+  
+
+    // //    let obj = {expense_val:expense_val,text:text,option_val:option_val,date:date}
+    //    arr1.push(obj)
+      
+    //     arr1.forEach((val)=>{
+    //       if(val.option_val === 'grocery'){
+    //             if(editflag){
+    //             totalexpense = totalexpense + parseInt(val.expense_val);
+    //             setGrocerry(grocerry + totalexpense);
+    //             setTotalExpense(totalExpense + totalexpense);
+    //             setTotalBalance(totalBalance - parseInt(totalexpense));
+    //             setCart([...cart,obj])
+    //             }
+    //             else{
+    //                 console.log('hello');
+                    
+    //                 let temp = cart;
+    //                 temp.splice(index1,1,obj);
+    //                 console.log(temp);
+                    
+    //                 setCart([...temp])
+    //               }
+    //          }
+    //     })
+    //     }
+    //    else if(option_val === 'veggies'){
+    // //    let obj = {expense_val:expense_val,text:text,option_val:option_val,date:date}
+    //     arr1.push(obj);
+    //      arr1.forEach((val)=>{
+           
+    //          if(val.option_val === 'veggies'){
+    //             if(editflag){
+    //              totalexpense = totalexpense + parseInt(val.expense_val);
+    //              setVeggies(veggies + totalexpense);
+    //              setTotalExpense(totalExpense + totalexpense);
+    //              setTotalBalance(totalBalance - parseInt(totalexpense));
+    //              setCart([...cart,obj]);
+    //             }
+    //             else{
+    //                 let temp = cart;
+    //                 temp.splice(index1,1,obj);
+    //                 setCart([...temp]) ;
+    //             }
+    //          }
+    //      })
+         
+    //    }
+    //    else if(option_val === 'travelling'){
+    //     // let obj = {expense_val:expense_val,text:text,option_val:option_val,date:date}
+    //     arr1.push(obj)
+       
+    //      arr1.forEach((val)=>{
+    //        if(val.option_val === 'travelling'){
+    //            if(editflag){
+    //             totalexpense = totalexpense + parseInt(val.expense_val);
+    //             setTravelling(travelling + totalexpense);
+    //             setTotalExpense(totalExpense + totalexpense);
+    //             setTotalBalance(totalBalance - parseInt(totalexpense));
+    //             setCart([...cart,obj])
+    //            }
+    //            else{
+    //             let temp = cart;
+    //             temp.splice(index1,1,obj);
+    //             setCart([...temp]) ;
+    //            }
+                
+    //          }
+    //      })
+    //      }
+    //    else if(option_val === 'miscllaneous'){
+    //     // let obj = {expense_val:expense_val,text:text,option_val:option_val,date:date}
+    //     arr1.push(obj)
+      
+    //     arr1.forEach((val)=>{
+    //        if(val.option_val === 'miscllaneous'){
+    //         if(editflag){
+    //             totalexpense = totalexpense + parseInt(val.expense_val);
+    //             setMiscallneous(miscallneous + totalexpense);
+    //             setTotalExpense(totalExpense + totalexpense);
+    //             setTotalBalance(totalBalance - parseInt(totalexpense));
+    //             setCart([...cart,obj])
+    //         }
+    //         else{
+    //             let temp = cart;
+    //             temp.splice(index1,1,obj);
+    //             setCart([...temp]) ;
+    //         }
+                
+    //         }
+    //     })
+        
+    //    }
+    //    else{
+    //     alert('please select category..')
+    //    }
+
+      setFlag(false);
     }
+   
   //................. DELETE FUNCTION  ......................//
     const DeleteExpense = (index) =>{
       
@@ -269,4 +310,3 @@ const ExpenseManager = () => {
 }
 
 export default ExpenseManager
-
